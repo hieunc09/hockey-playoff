@@ -33,7 +33,9 @@
             $winners = [];
             for ($i = 0; $i < count($this->teams); $i += 2) {
                 $serie = new Serie($this->teams[$i], $this->teams[$i + 1]);
-                $winners[] = $serie->playSerie("Serie");
+                $serieWinner = $serie->playSerie();
+                $serie->showSerieResult("Serie", $serieWinner);
+                $winners[] = $serieWinner;
             }
 
             return $winners;

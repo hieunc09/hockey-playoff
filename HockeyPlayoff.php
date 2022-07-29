@@ -20,7 +20,9 @@
             echo "---------";
 
             $finnalSerie = new Serie($winnerEastDivision, $winnerWestDivision);
-            $finnalSerie->playSerie('Final');
+            $finalWinner = $finnalSerie->playSerie();
+            $finnalSerie->showSerieResult("Final", $finalWinner);
+
         }
 
         /**

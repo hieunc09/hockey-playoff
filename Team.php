@@ -21,15 +21,26 @@
 
         /**
          * @param $name
-         * @param $players
          */
         public function __construct(
-            $name,
-            $players
+            $name
         ) {
             $this->name = $name;
-            $this->players = $players;
+            $this->players = $this->generatePlayers();
             $this->oddsOfSuccess = $this->calculateOddsOfSuccess();
+        }
+
+        /**
+         * @return Player []
+         */
+        private function generatePlayers(): array
+        {
+            $players = [];
+            for ($i = 1; $i <= Team::NUMBER_OF_PLAYER; $i++) {
+                $players[] = new Player();
+            }
+
+            return $players;
         }
 
         /**

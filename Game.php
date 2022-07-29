@@ -10,16 +10,16 @@
         /**
          * @var Team
          */
-        private $awayTeam;
+        private $visitorTeam;
 
         /**
          * @param $homeTeam
-         * @param $awayTeam
+         * @param $visitorTeam
          */
-        public function __construct($homeTeam, $awayTeam)
+        public function __construct($homeTeam, $visitorTeam)
         {
             $this->homeTeam = $homeTeam;
-            $this->awayTeam = $awayTeam;
+            $this->visitorTeam = $visitorTeam;
         }
 
         /**
@@ -28,10 +28,10 @@
         public function playGame(): Team
         {
             $randomNumberHomeTeam = rand(0, 10) / 10;
-            $randomNumberAwayTeam = rand(0, 10) / 10;
+            $randomNumberVisitorTeam = rand(0, 10) / 10;
             $result = $this->homeTeam->getOddsOfSuccess() * $randomNumberHomeTeam >
-                $this->awayTeam->getOddsOfSuccess() * $randomNumberAwayTeam;
+                $this->visitorTeam->getOddsOfSuccess() * $randomNumberVisitorTeam;
 
-            return $result ? $this->homeTeam : $this->awayTeam;
+            return $result ? $this->homeTeam : $this->visitorTeam;
         }
     }

@@ -14,12 +14,24 @@
 
         /**
          * @param $name
-         * @param $teams
          */
-        public function __construct($name, $teams)
+        public function __construct($name)
         {
             $this->name = $name;
-            $this->teams = $teams;
+            $this->teams = $this->generateTeams();
+        }
+
+        /**
+         * @return Team []
+         */
+        private function generateTeams(): array
+        {
+            $teamNames = range("A", "H");
+            $teams = [];
+            foreach ($teamNames as $teamName) {
+                $teams[] = new Team($teamName);
+            }
+            return $teams;
         }
 
         /**

@@ -13,16 +13,16 @@
         /**
          * @var Team
          */
-        private $awayTeam;
+        private $visitorTeam;
 
         /**
          * @param $homeTeam
-         * @param $awayTeam
+         * @param $visitorTeam
          */
-        public function __construct($homeTeam, $awayTeam)
+        public function __construct($homeTeam, $visitorTeam)
         {
             $this->homeTeam = $homeTeam;
-            $this->awayTeam = $awayTeam;
+            $this->visitorTeam = $visitorTeam;
         }
 
         /**
@@ -32,29 +32,29 @@
         public function playSerie(string $type): Team
         {
             $serieWinner = null;
-            $homeTeamScore = $awayTeamScore = $loserScore = 0;
+            $homeTeamScore = $visitorTeamScore = $loserScore = 0;
             for ($i = 0; $i <= self::NUMBER_OF_GAME; $i++) {
                 if ($homeTeamScore === self::SCORE_TO_WIN) {
                     $serieWinner = $this->homeTeam;
-                    $loserScore = $awayTeamScore;
+                    $loserScore = $visitorTeamScore;
                     break;
                 }
-                if ($awayTeamScore === self::SCORE_TO_WIN) {
-                    $serieWinner = $this->awayTeam;
+                if ($visitorTeamScore === self::SCORE_TO_WIN) {
+                    $serieWinner = $this->visitorTeam;
                     $loserScore = $homeTeamScore;
                     break;
                 }
-                $game = new Game($this->homeTeam, $this->awayTeam);
+                $game = new Game($this->homeTeam, $this->visitorTeam);
                 $gameWinner = $game->playGame();
                 if ($gameWinner->getName() === $this->homeTeam->getName()) {
                     $homeTeamScore++;
                 } else {
-                    $awayTeamScore++;
+                    $visitorTeamScore++;
                 }
             }
 
             echo "\n";
-            echo $type . " " . $this->homeTeam->getName() . " vs " . $this->awayTeam->getName() . " - Winner: " .
+            echo $type . " " . $this->homeTeam->getName() . " vs " . $this->visitorTeam->getName() . " - Winner: " .
                 $serieWinner->getName() . " (4/" . $loserScore . ")";
 
             return $serieWinner;

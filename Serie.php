@@ -2,7 +2,7 @@
 
     class Serie
     {
-        const NUMBER_OF_MATCH = 7;
+        const NUMBER_OF_GAME = 7;
         const SCORE_TO_WIN = 4;
 
         /**
@@ -33,7 +33,7 @@
         {
             $serieWinner = null;
             $homeTeamScore = $awayTeamScore = $loserScore = 0;
-            for ($i = 0; $i <= self::NUMBER_OF_MATCH; $i++) {
+            for ($i = 0; $i <= self::NUMBER_OF_GAME; $i++) {
                 if ($homeTeamScore === self::SCORE_TO_WIN) {
                     $serieWinner = $this->homeTeam;
                     $loserScore = $awayTeamScore;
@@ -44,9 +44,9 @@
                     $loserScore = $homeTeamScore;
                     break;
                 }
-                $match = new Match($this->homeTeam, $this->awayTeam);
-                $matchWinner = $match->playMatch();
-                if ($matchWinner->getName() === $this->homeTeam->getName()) {
+                $game = new Game($this->homeTeam, $this->awayTeam);
+                $gameWinner = $game->playGame();
+                if ($gameWinner->getName() === $this->homeTeam->getName()) {
                     $homeTeamScore++;
                 } else {
                     $awayTeamScore++;

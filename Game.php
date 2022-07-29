@@ -1,6 +1,6 @@
 <?php
 
-    class Match
+    class Game
     {
         /**
          * @var Team
@@ -25,7 +25,7 @@
         /**
          * @return Team
          */
-        public function playMatch(): Team
+        public function playGame(): Team
         {
             $randomNumberHomeTeam = rand(0, 10) / 10;
             $randomNumberAwayTeam = rand(0, 10) / 10;

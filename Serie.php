@@ -53,10 +53,21 @@
                 }
             }
 
+            $this->showSerieResult($type, $serieWinner, $loserScore);
+
+            return $serieWinner;
+        }
+
+        /**
+         * @param string $type
+         * @param Team $serieWinner
+         * @param int $loserScore
+         * @return void
+         */
+        private function showSerieResult(string $type, Team $serieWinner, int $loserScore): void
+        {
             echo "\n";
             echo $type . " " . $this->homeTeam->getName() . " vs " . $this->visitorTeam->getName() . " - Winner: " .
                 $serieWinner->getName() . " (4/" . $loserScore . ")";
-
-            return $serieWinner;
         }
     }
